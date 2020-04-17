@@ -1,4 +1,4 @@
-const { fireSound, missSound, successSound, wrongAreaSound } = require("./sounds")
+// const { fireSound, missSound, successSound, wrongAreaSound } = require("./sounds")
 
 
 
