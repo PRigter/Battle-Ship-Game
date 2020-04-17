@@ -3348,7 +3348,8 @@ function init() {
   fireButton.onclick = handleFireButton;
   guessInput.onkeypress = handleKeyPress;
   model.generateShipLocations();
-  table.onclick = tableClickHandler; // countdownHandler()
+  table.onclick = tableClickHandler;
+  countdownHandler();
 }
 
 function handleFireButton() {
@@ -3397,7 +3398,7 @@ var view = {
 };
 var model = {
   boardSize: 7,
-  numShips: 3,
+  numShips: 1,
   shipLength: 3,
   shipsSunk: 0,
   ships: [{
@@ -3518,6 +3519,7 @@ var controller = {
         view.displayMessage("You sank all my battleships in " + this.guesses + " guesses");
         form.style.display = "none";
         successSound.play();
+        clearInterval(countdown);
       }
     }
   }
@@ -3565,8 +3567,7 @@ function countdownHandler() {
       view.displayMessage("Time's up! Better Luck Next Time");
     }
   }, 1000);
-} // clearInterval(countdown)
-// Events Handler Object --> With the 2 Methods / functions 
+} // Events Handler Object --> With the 2 Methods / functions 
 // Each event is calling a Callback function --> that is triggered on Animation END
 // To remove the animation class
 
@@ -3618,7 +3619,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55791" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57916" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
