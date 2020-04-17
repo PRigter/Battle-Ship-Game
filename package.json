@@ -1,0 +1,15 @@
+{
+  "name": "battle_ship_game",
+  "version": "1.0.0",
+  "description": "Battle Ship Game",
+  "main": "main.js",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel index.html"
+  },
+  "author": "Paulo Rigter",
+  "license": "MIT",
+  "dependencies": {
+    "howler": "^2.1.3"
+  }
+}
