@@ -1,4 +1,4 @@
-
+// REQUIRE SOUND EFFECTS
 // const { fireSound, missSound, successSound, wrongAreaSound } = require("./sounds")
 
 
