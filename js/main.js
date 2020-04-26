@@ -3,15 +3,27 @@
 
 
 // Global Variables
-let form = document.getElementById("form")
+const form = document.getElementById("form")
 let guessInput = document.getElementById("guessInput")
 let fireButton = document.getElementById("fireButton")
 let messageArea = document.getElementById("messageArea")
 let clockElement = document.getElementById("clock")
 let table = document.getElementById("table")
+let pageblur = document.getElementById("blur")
+let popup = document.getElementById("popup")
+let credits = document.getElementById("credits")
 
 
-window.onload = init
+
+function readInstructions() {
+    pageblur.classList.remove("active")
+    popup.classList.add("hidden")
+    clockElement.classList.add("clockAnimation")
+    init()
+}
+
+
+// window.onload = init
 
 
 function init() {
@@ -20,8 +32,8 @@ function init() {
     model.generateShipLocations()
     table.onclick = tableClickHandler
     countdownHandler()
+    showCreditsHandler()
 }
-
 
 
 function handleFireButton() {
@@ -40,7 +52,7 @@ function handleKeyPress(e) {
 function tableClickHandler() {
     guessInput.classList = "isVisible"
     fireButton.classList = "isVisible"
-    wrongAreaSound.play()
+    // wrongAreaSound.play()
     addEventListener("animationend", animationEndCallback)
 }
 
@@ -50,6 +62,20 @@ function animationEndCallback() {
     messageArea.classList.remove("isVisible")
     clockElement.classList.remove("addAnimate")
     clockElement.classList.remove("minusAnimate")
+}
+
+function showCreditsHandler() {
+    credits.addEventListener("click", toggleAccordion)
+}
+
+function toggleAccordion(e) {
+    console.log(e)
+    const creditsContent = credits.querySelector(".accordion-content")
+    const arrow = credits.querySelector(".accordion-arrow")
+    console.log(creditsContent)
+    arrow.classList.toggle("active-arrow")
+    creditsContent.classList.toggle("hidden")
+    creditsContent.classList.toggle("active-content")
 }
 
 
@@ -75,7 +101,7 @@ let view = {
 
 let model = {
     boardSize: 7,
-    numShips: 1,
+    numShips: 3,
     shipLength: 3, 
     shipsSunk: 0,
 
@@ -94,7 +120,7 @@ let model = {
                 view.displayHit(guess)
                 view.displayMessage("HIT!")
                 countdownEventsHandler.addTime()
-                fireSound.play()
+                // fireSound.play()
 
                 if (this.isSunk(ship)) {
                     view.displayMessage("You sank my battleship!")
@@ -108,7 +134,7 @@ let model = {
         view.displayMiss(guess)
         view.displayMessage("You missed.")
         countdownEventsHandler.removeTime()
-        missSound.play()
+        // missSound.play()
         return false
     },
 
@@ -206,7 +232,7 @@ let controller = {
             if (hit && model.shipsSunk === model.numShips) {
                 view.displayMessage("You sank all my battleships in " + this.guesses + " guesses")
                 form.style.display = "none"
-                successSound.play()
+                // successSound.play()
                 clearInterval(countdown)
             }
         }
