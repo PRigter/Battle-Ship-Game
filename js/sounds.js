@@ -2,7 +2,7 @@ const { Howl } = require('howler');
 
 
 const fireSound = new Howl({
-    src: ["assets/sounds/shockwave_whoosh_into_metal_06.mp3", "assets/sounds/shockwave_whoosh_metal_06.ogg"],
+    src: ["assets/sounds/shockwave_whoosh_into_metal_06.mp3", "assets/sounds/shockwave_whoosh_into_metal_06.ogg"],
     onload() {
 
     },

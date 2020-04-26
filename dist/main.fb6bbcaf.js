@@ -3282,7 +3282,7 @@ var _require = require('howler'),
     Howl = _require.Howl;
 
 var fireSound = new Howl({
-  src: ["assets/sounds/shockwave_whoosh_into_metal_06.mp3", "assets/sounds/shockwave_whoosh_metal_06.ogg"],
+  src: ["assets/sounds/shockwave_whoosh_into_metal_06.mp3", "assets/sounds/shockwave_whoosh_into_metal_06.ogg"],
   onload: function onload() {},
   volume: 0.3,
   onloaderror: function onloaderror(e, msg) {
@@ -3629,7 +3629,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60642" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58224" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

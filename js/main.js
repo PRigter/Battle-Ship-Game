@@ -2,6 +2,7 @@
 const { fireSound, missSound, successSound, wrongAreaSound } = require("./sounds")
 
 
+
 // Global Variables
 const form = document.getElementById("form")
 const guessInput = document.getElementById("guessInput")
