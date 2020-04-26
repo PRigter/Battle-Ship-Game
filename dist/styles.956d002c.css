@@ -69,7 +69,7 @@ body {
 }
 
 #box1 {
-    width: 400px;
+    max-width: 540px;
 }
 
 #board-container {
@@ -128,12 +128,12 @@ body {
 #messageArea {
     visibility: hidden;
     min-height: 40px;
-    font-size: 32px;
+    font-size: 30px;
     text-align: center;
     vertical-align: middle;
     text-transform: uppercase;
     font-weight: bold;
-    margin: 80px auto 0px auto;
+    margin: 40px auto 0px auto;
     color: whitesmoke;
     border-radius: .1em;
     border: 0px;
@@ -287,18 +287,20 @@ input[type="text"]:-ms-input-placeholder {
 }
 
 #restart {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    max-width: 400px;
-    margin-top: 140px;
+    /* display: flex;
+    justify-content: center; */
+    /* align-items: flex-end; */
+    /* display: inline-block; */
+    max-width: 90px;
+    /* margin-top: 140px; */
+    margin: 20px auto;
 }
 
 #restart-btn { 
     width: 90px;
-    padding: 6px;
+    padding: 4px;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
     color: rgb(215, 243, 245);
     letter-spacing: 1px;
     text-align: center;
@@ -342,7 +344,7 @@ input, button[type="button"]:focus {
 .credits-container {
     align-self: flex-end;
     max-width: 510px;
-    margin: 80px 40px 0 0;
+    margin: 50px 40px 0px 0;
     cursor: pointer;
 }
 
