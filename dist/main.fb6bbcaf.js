@@ -129,15 +129,15 @@ var clockElement = document.getElementById("clock");
 var table = document.getElementById("table");
 var pageblur = document.getElementById("blur");
 var popup = document.getElementById("popup");
-var credits = document.getElementById("credits"); // INITAL INSTRUCTIONS FUNCTION --> PLAY BUTTON
+var credits = document.getElementById("credits");
+var playButton = document.getElementById("play-btn-container"); // INITAL INSTRUCTIONS FUNCTION --> PLAY BUTTON
 
-function read() {
+playButton.addEventListener("click", function read() {
   pageblur.classList.remove("active");
   popup.classList.add("hidden");
   clockElement.classList.add("clockAnimation");
   init();
-} // window.onload = init
-
+});
 
 function init() {
   fireButton.onclick = handleFireButton;
@@ -163,8 +163,8 @@ function handleKeyPress(e) {
 
 function tableClickHandler() {
   guessInput.classList = "isVisible";
-  fireButton.classList = "isVisible";
-  wrongAreaSound.play();
+  fireButton.classList = "isVisible"; // wrongAreaSound.play()
+
   addEventListener("animationend", animationEndCallback);
 }
 
@@ -177,6 +177,7 @@ function animationEndCallback() {
 }
 
 function showCreditsHandler() {
+  credits.classList.remove("hidden");
   credits.addEventListener("click", toggleAccordion);
 }
 
@@ -228,8 +229,7 @@ var model = {
         ship.hits[index] = "hit";
         view.displayHit(guess);
         view.displayMessage("HIT!");
-        countdownEventsHandler.addTime();
-        fireSound.play();
+        countdownEventsHandler.addTime(); // fireSound.play()
 
         if (this.isSunk(ship)) {
           view.displayMessage("You sank my battleship!");
@@ -242,8 +242,8 @@ var model = {
 
     view.displayMiss(guess);
     view.displayMessage("You missed.");
-    countdownEventsHandler.removeTime();
-    missSound.play();
+    countdownEventsHandler.removeTime(); // missSound.play()
+
     return false;
   },
   isSunk: function isSunk(ship) {
@@ -321,8 +321,8 @@ var controller = {
 
       if (hit && model.shipsSunk === model.numShips) {
         view.displayMessage("You sank all my battleships in " + this.guesses + " guesses");
-        form.style.display = "none";
-        successSound.play();
+        form.style.display = "none"; // successSound.play()
+
         clearInterval(countdown);
       }
     }
@@ -421,7 +421,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54429" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58542" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

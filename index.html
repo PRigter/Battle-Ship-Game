@@ -29,6 +29,24 @@
                     <a href="index.html">Restart</a>
                 </button>
             </div>
+
+            <div class="credits-container">
+                <div id="credits" class="credits-accordion-item hidden">
+                    <div class="credits-title">
+                        <h3>Credits</h3>
+                        <svg viewBox="0 0 20 20" width="20" height="20" class="fill-current text-grey-dark accordion-arrow"><title>cheveron down</title><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path></svg>
+                    </div>
+        
+                    <ul class="accordion-content hidden">
+                        <li class="content-item">Game Logic based on "Head First Javascript Programming -O'Reilly"</li>
+                        <li class="content-item">Sound effects obtained from <a href="https://www.zapsplat.com" title="zapslat" target="_blank">zapslat - www.zapslat.com</a></li>
+                        <li class="content-item">Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons" target="_blank">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></li>
+                        <li class="content-item">Icons made by <a href="https://www.flaticon.com/authors/fjstudio" title="fjstudio" target="_blank">fjstudio</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
 
         <div id="board-container">
@@ -80,22 +98,6 @@
         </div>  <!-- END of board-container -->      
     </div>
     
-    <div class="credits-container">
-        <div id="credits" class="credits-accordion-item">
-            <div class="credits-title">
-                <h3>Credits</h3>
-                <svg viewBox="0 0 20 20" width="20" height="20" class="fill-current text-grey-dark accordion-arrow"><title>cheveron down</title><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path></svg>
-            </div>
-
-            <ul class="accordion-content hidden">
-                <li class="content-item">Game Logic based on "Head First Javascript Programming -O'Reilly"</li>
-                <li class="content-item">Sound effects obtained from <a href="https://www.zapsplat.com" title="zapslat" target="_blank">zapslat - www.zapslat.com</a></li>
-                <li class="content-item">Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons" target="_blank">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></li>
-                <li class="content-item">Icons made by <a href="https://www.flaticon.com/authors/fjstudio" title="fjstudio" target="_blank">fjstudio</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a>
-                </li>
-            </ul>
-        </div>
-    </div>
 
 
     <!-- INICIAL POPUP - WELCOME MESSAGE  -->
@@ -103,20 +105,19 @@
         <h3 id="instructions-header">Welcome to my Battleship Game!</h3>
         <p id="instructions-text">
             Find out where are the 3 Battleships.<br>
-            Each Battleship are made of 3 cells.<br>
-            They can be horizontal or vertical diplayed.
+            Each Battleship are made of 3 cells. They can be horizontal or vertical diplayed.
             <p>
                 You have 4 minutes to find all of them.<br>
                 Each MISS will decrease time in 5 seconds.<br>
                 Each HIT will increase time in 5 seconds.
             </p>
         </p>
-        <img src="./assets/table_example.png" alt="image of table">
-    <button type="button" id="play-btn-container" onclick="test()">PLAY</button>
+        <img src="./assets/table_example_434.png" alt="image of table">
+    <button type="button" id="play-btn-container">PLAY</button>
     </div>       
 
 
     <script type="text/javascript" src="./js/main.js"></script>
-    
+ 
 </body>
 </html>

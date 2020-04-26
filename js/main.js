@@ -1,5 +1,5 @@
 // REQUIRE SOUND EFFECTS
-// const { fireSound, missSound, successSound, wrongAreaSound } = require("./sounds")
+const { fireSound, missSound, successSound, wrongAreaSound } = require("./sounds")
 
 
 // Global Variables
@@ -12,21 +12,18 @@ const table = document.getElementById("table")
 const pageblur = document.getElementById("blur")
 const popup = document.getElementById("popup")
 const credits = document.getElementById("credits")
+const playButton = document.getElementById("play-btn-container")
 
 
-// INITAL INSTRUCTIONS FUNCTION --> PLAY BUTTON
-function read() {
+// INITIAL INSTRUCTIONS --> PLAY BUTTON
+playButton.addEventListener("click", function() {
     pageblur.classList.remove("active")
     popup.classList.add("hidden")
     clockElement.classList.add("clockAnimation")
     init()
-}
+})
 
-function test() {
-    console.log("HI")
-}
 
-// window.onload = init
 
 function init() {
     fireButton.onclick = handleFireButton
@@ -71,6 +68,7 @@ function animationEndCallback() {
 
 
 function showCreditsHandler() {
+    credits.classList.remove("hidden")
     credits.addEventListener("click", toggleAccordion)
 }
 
@@ -213,7 +211,6 @@ let model = {
 
         return false
     }
-
 }
 
 
