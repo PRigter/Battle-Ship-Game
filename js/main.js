@@ -1,17 +1,30 @@
+<<<<<<< HEAD
 const { fireSound, missSound, successSound, wrongAreaSound } = require("./sounds")
-
+=======
+// REQUIRE SOUNDS EFFECTS
+// const { fireSound, missSound, successSound, wrongAreaSound } = require("./sounds")
+>>>>>>> develop
 
 
 // Global Variables
-let form = document.getElementById("form")
-let guessInput = document.getElementById("guessInput")
-let fireButton = document.getElementById("fireButton")
-let messageArea = document.getElementById("messageArea")
-let clockElement = document.getElementById("clock")
-let table = document.getElementById("table")
+const form = document.getElementById("form")
+const guessInput = document.getElementById("guessInput")
+const fireButton = document.getElementById("fireButton")
+const messageArea = document.getElementById("messageArea")
+const clockElement = document.getElementById("clock")
+const table = document.getElementById("table")
+const pageblur = document.getElementById("blur")
+const popup = document.getElementById("popup")
+const credits = document.getElementById("credits")
 
 
-window.onload = init
+// INITAL INSTRUCTIONS FUNCTION --> PLAY BUTTON
+function readInstructions() {
+    pageblur.classList.remove("active")
+    popup.classList.add("hidden")
+    clockElement.classList.add("clockAnimation")
+    init()
+}
 
 
 function init() {
@@ -20,8 +33,8 @@ function init() {
     model.generateShipLocations()
     table.onclick = tableClickHandler
     countdownHandler()
+    showCreditsHandler()
 }
-
 
 
 function handleFireButton() {
@@ -30,6 +43,7 @@ function handleFireButton() {
     guessInput.value = ""
 }
 
+
 function handleKeyPress(e) {
     if (e.keyCode === 13) {
         fireButton.click()
@@ -37,12 +51,14 @@ function handleKeyPress(e) {
     }
 }
 
+
 function tableClickHandler() {
     guessInput.classList = "isVisible"
     fireButton.classList = "isVisible"
-    wrongAreaSound.play()
+    // wrongAreaSound.play()
     addEventListener("animationend", animationEndCallback)
 }
+
 
 function animationEndCallback() {
     guessInput.classList.remove("isVisible")
@@ -50,6 +66,21 @@ function animationEndCallback() {
     messageArea.classList.remove("isVisible")
     clockElement.classList.remove("addAnimate")
     clockElement.classList.remove("minusAnimate")
+}
+
+
+function showCreditsHandler() {
+    credits.addEventListener("click", toggleAccordion)
+}
+
+
+function toggleAccordion() {
+    const creditsContent = credits.querySelector(".accordion-content")
+    const arrow = credits.querySelector(".accordion-arrow")
+    
+    arrow.classList.toggle("active-arrow")
+    creditsContent.classList.toggle("hidden")
+    creditsContent.classList.toggle("active-content")
 }
 
 
@@ -75,7 +106,7 @@ let view = {
 
 let model = {
     boardSize: 7,
-    numShips: 1,
+    numShips: 3,
     shipLength: 3, 
     shipsSunk: 0,
 
@@ -94,7 +125,7 @@ let model = {
                 view.displayHit(guess)
                 view.displayMessage("HIT!")
                 countdownEventsHandler.addTime()
-                fireSound.play()
+                // fireSound.play()
 
                 if (this.isSunk(ship)) {
                     view.displayMessage("You sank my battleship!")
@@ -108,7 +139,7 @@ let model = {
         view.displayMiss(guess)
         view.displayMessage("You missed.")
         countdownEventsHandler.removeTime()
-        missSound.play()
+        // missSound.play()
         return false
     },
 
@@ -206,7 +237,7 @@ let controller = {
             if (hit && model.shipsSunk === model.numShips) {
                 view.displayMessage("You sank all my battleships in " + this.guesses + " guesses")
                 form.style.display = "none"
-                successSound.play()
+                // successSound.play()
                 clearInterval(countdown)
             }
         }
@@ -244,7 +275,6 @@ const initialMinutes = 4
 let time = initialMinutes * 60
 let countdown
 
-
 function countdownHandler() {
     countdown = setInterval(function() {
         let minutes = Math.floor(time / 60)
@@ -265,7 +295,6 @@ function countdownHandler() {
 }
 
 
-
 // Events Handler Object --> With the 2 Methods / functions 
 // Each event is calling a Callback function --> that is triggered on Animation END
     // To remove the animation class
@@ -278,9 +307,7 @@ function countdownHandler() {
                 clockElement.addEventListener("animationend", animationEndCallback)
                 return time
             }
-            
         },
-        
         removeTime: function() {
             if (time < initialMinutes * 60) {
                 time = time - 5
@@ -290,7 +317,6 @@ function countdownHandler() {
                 clockElement.addEventListener("animationend", animationEndCallback)
                 return time
             }
-           
         }
     }
     
