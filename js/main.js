@@ -1,4 +1,5 @@
-const { fireSound, missSound, successSound, wrongAreaSound } = require("./sounds")
+// REQUIRE SOUND EFFECTS
+// const { fireSound, missSound, successSound, wrongAreaSound } = require("./sounds")
 
 
 // Global Variables
@@ -14,13 +15,18 @@ const credits = document.getElementById("credits")
 
 
 // INITAL INSTRUCTIONS FUNCTION --> PLAY BUTTON
-function readInstructions() {
+function read() {
     pageblur.classList.remove("active")
     popup.classList.add("hidden")
     clockElement.classList.add("clockAnimation")
     init()
 }
 
+function test() {
+    console.log("HI")
+}
+
+// window.onload = init
 
 function init() {
     fireButton.onclick = handleFireButton
@@ -50,7 +56,7 @@ function handleKeyPress(e) {
 function tableClickHandler() {
     guessInput.classList = "isVisible"
     fireButton.classList = "isVisible"
-    // wrongAreaSound.play()
+    wrongAreaSound.play()
     addEventListener("animationend", animationEndCallback)
 }
 
@@ -112,7 +118,6 @@ let model = {
     fire: function(guess) {
         for (let i = 0; i < this.numShips; i++) {
             let ship = this.ships[i]
-            console.log(ship)
             let index = ship.locations.indexOf(guess)
             
             if (index >= 0) {
@@ -120,7 +125,7 @@ let model = {
                 view.displayHit(guess)
                 view.displayMessage("HIT!")
                 countdownEventsHandler.addTime()
-                // fireSound.play()
+                fireSound.play()
 
                 if (this.isSunk(ship)) {
                     view.displayMessage("You sank my battleship!")
@@ -134,7 +139,7 @@ let model = {
         view.displayMiss(guess)
         view.displayMessage("You missed.")
         countdownEventsHandler.removeTime()
-        // missSound.play()
+        missSound.play()
         return false
     },
 
@@ -166,11 +171,8 @@ let model = {
             // A outra - gera ships na vertical
         // Com essa direção vamos primeiro definir o STARTING POINT da localização do SHIP
 
-
         let direction = Math.floor(Math.random() * 2)
         let row, col
-
-        console.log(direction)
 
         if (direction === 1) {
             row = Math.floor(Math.random() * this.boardSize)
@@ -193,9 +195,7 @@ let model = {
                 newShipLocations.push((row + i) + "" + col)
             }
         }
-        
-        console.log(newShipLocations)
-        
+               
         return newShipLocations
     },
 
@@ -224,7 +224,6 @@ let controller = {
         let location = parseGuess(guess)
 
         if (location) {
-            console.log(location)
             this.guesses++
 
             let hit = model.fire(location)
@@ -232,7 +231,7 @@ let controller = {
             if (hit && model.shipsSunk === model.numShips) {
                 view.displayMessage("You sank all my battleships in " + this.guesses + " guesses")
                 form.style.display = "none"
-                // successSound.play()
+                successSound.play()
                 clearInterval(countdown)
             }
         }
@@ -250,7 +249,6 @@ function parseGuess(guess) {
         let firstChar = guess.charAt(0).toUpperCase()
         let row = alphabet.indexOf(firstChar)
         let column = guess.charAt(1)
-        console.log(row + column)
 
         if (isNaN(row) || isNaN(column)) {
             alert("Oops, that isn't in the board.")
@@ -308,7 +306,6 @@ function countdownHandler() {
                 time = time - 5
 
                 clockElement.classList.add("minusAnimate")
-                console.log("water")
                 clockElement.addEventListener("animationend", animationEndCallback)
                 return time
             }
