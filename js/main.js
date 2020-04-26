@@ -1,29 +1,26 @@
+// REQUIRE SOUNDS EFFECTS
 // const { fireSound, missSound, successSound, wrongAreaSound } = require("./sounds")
-
 
 
 // Global Variables
 const form = document.getElementById("form")
-let guessInput = document.getElementById("guessInput")
-let fireButton = document.getElementById("fireButton")
-let messageArea = document.getElementById("messageArea")
-let clockElement = document.getElementById("clock")
-let table = document.getElementById("table")
-let pageblur = document.getElementById("blur")
-let popup = document.getElementById("popup")
-let credits = document.getElementById("credits")
+const guessInput = document.getElementById("guessInput")
+const fireButton = document.getElementById("fireButton")
+const messageArea = document.getElementById("messageArea")
+const clockElement = document.getElementById("clock")
+const table = document.getElementById("table")
+const pageblur = document.getElementById("blur")
+const popup = document.getElementById("popup")
+const credits = document.getElementById("credits")
 
 
-
+// INITAL INSTRUCTIONS FUNCTION --> PLAY BUTTON
 function readInstructions() {
     pageblur.classList.remove("active")
     popup.classList.add("hidden")
     clockElement.classList.add("clockAnimation")
     init()
 }
-
-
-// window.onload = init
 
 
 function init() {
@@ -42,6 +39,7 @@ function handleFireButton() {
     guessInput.value = ""
 }
 
+
 function handleKeyPress(e) {
     if (e.keyCode === 13) {
         fireButton.click()
@@ -49,12 +47,14 @@ function handleKeyPress(e) {
     }
 }
 
+
 function tableClickHandler() {
     guessInput.classList = "isVisible"
     fireButton.classList = "isVisible"
     // wrongAreaSound.play()
     addEventListener("animationend", animationEndCallback)
 }
+
 
 function animationEndCallback() {
     guessInput.classList.remove("isVisible")
@@ -64,15 +64,16 @@ function animationEndCallback() {
     clockElement.classList.remove("minusAnimate")
 }
 
+
 function showCreditsHandler() {
     credits.addEventListener("click", toggleAccordion)
 }
 
-function toggleAccordion(e) {
-    console.log(e)
+
+function toggleAccordion() {
     const creditsContent = credits.querySelector(".accordion-content")
     const arrow = credits.querySelector(".accordion-arrow")
-    console.log(creditsContent)
+    
     arrow.classList.toggle("active-arrow")
     creditsContent.classList.toggle("hidden")
     creditsContent.classList.toggle("active-content")
@@ -270,7 +271,6 @@ const initialMinutes = 4
 let time = initialMinutes * 60
 let countdown
 
-
 function countdownHandler() {
     countdown = setInterval(function() {
         let minutes = Math.floor(time / 60)
@@ -291,7 +291,6 @@ function countdownHandler() {
 }
 
 
-
 // Events Handler Object --> With the 2 Methods / functions 
 // Each event is calling a Callback function --> that is triggered on Animation END
     // To remove the animation class
@@ -304,9 +303,7 @@ function countdownHandler() {
                 clockElement.addEventListener("animationend", animationEndCallback)
                 return time
             }
-            
         },
-        
         removeTime: function() {
             if (time < initialMinutes * 60) {
                 time = time - 5
@@ -316,7 +313,6 @@ function countdownHandler() {
                 clockElement.addEventListener("animationend", animationEndCallback)
                 return time
             }
-           
         }
     }
     
